@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "578932192769",
+    "project_id": "women-empowerment-73942",
+    "storage_bucket": "women-empowerment-73942.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:578932192769:android:e87db9751c6400f283b200",
+        "android_client_info": {
+          "package_name": "com.example.liberty_furies"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "578932192769-tofssrvjrpsb74uemfupjkoeedj7j6h1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2xQ5-TXQ96Ty6Isuo7H2HmVn8nSmzZ0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "578932192769-tofssrvjrpsb74uemfupjkoeedj7j6h1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
