@@ -8,6 +8,7 @@ import 'package:liberty_furies/pages/signup.dart';
 import 'package:liberty_furies/screens/home_screen.dart';
 
 class SplashActions {
+  
   final auth = FirebaseAuth.instance;
   void action(BuildContext context) {
     final user = auth.currentUser;

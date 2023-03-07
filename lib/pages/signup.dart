@@ -61,7 +61,7 @@ class _signUpState extends State<signUp> {
                     TextFormField(
                       controller: nameController,
                       decoration: InputDecoration(
-                          hintText: "Name",
+                          hintText: "Enter First Name",
                           prefixIcon: Icon(Icons.person),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(120))),

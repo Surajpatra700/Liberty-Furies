@@ -1,5 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:liberty_furies/pages/googleMapScreen.dart';
 import 'package:liberty_furies/screens/achievement.dart';
 import 'package:liberty_furies/screens/callscreen.dart';
 import 'package:liberty_furies/screens/home_screen.dart';
@@ -17,7 +18,8 @@ class _FrameworkScreenState extends State<FrameworkScreen> {
   int index = 2;
   final screens = [
     DoctorHomePage(),
-    CallScreen(),
+    //CallScreen(),
+    GoogleMapScreen(),
     HomeScreen(),
     Achievement(),
     UserDetail(),
@@ -33,7 +35,7 @@ class _FrameworkScreenState extends State<FrameworkScreen> {
         onTap: (index) {
           setState(() {
             this.index = index;
-          });       
+          });
         },
         backgroundColor: Colors.transparent,
         //color: Color.fromARGB(255, 2, 173, 91),

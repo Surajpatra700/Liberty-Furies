@@ -49,6 +49,9 @@ dependencies:
   google_fonts: ^4.0.3
   url_launcher: ^6.1.10
   geolocator: ^9.0.2
+  http: ^0.13.5
+  uuid: ^3.0.7
+  geocoding: ^2.0.5
 
 dev_dependencies:
   flutter_test:
@@ -76,6 +79,7 @@ flutter:
   assets:
     - assets/animations/
     - assets/images/
+    - assets/maptheme/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
