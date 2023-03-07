@@ -26,6 +26,7 @@ class _FrameworkScreenState extends State<FrameworkScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: screens[index],
       bottomNavigationBar: CurvedNavigationBar(
         //buttonBackgroundColor: Colors.white,

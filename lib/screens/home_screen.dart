@@ -273,7 +273,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
 
             Container(
-              height: 1600,
+              height: 1650,
               //color: Colors.white,
               decoration: BoxDecoration(
                 color: Colors.white,

@@ -3,8 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:liberty_furies/actions/splashActions.dart';
 import 'package:liberty_furies/pages/framework.dart';
+import 'package:liberty_furies/pages/googleMapScreen.dart';
 import 'package:liberty_furies/pages/loginPage.dart';
 import 'package:liberty_furies/pages/signup.dart';
+import 'package:liberty_furies/screens/home_screen.dart';
 import 'package:liberty_furies/screens/splashScreen.dart';
 import 'package:lottie/lottie.dart';
 import 'package:firebase_core/firebase_core.dart';

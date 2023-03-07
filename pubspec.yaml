@@ -48,6 +48,7 @@ dependencies:
   fluttertoast: ^8.2.1
   google_fonts: ^4.0.3
   url_launcher: ^6.1.10
+  geolocator: ^9.0.2
 
 dev_dependencies:
   flutter_test:

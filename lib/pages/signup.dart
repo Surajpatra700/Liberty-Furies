@@ -166,7 +166,7 @@ class _signUpState extends State<signUp> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: ((context) => LoginScreen())));
+                                    builder: ((context) => LoginScreen(name: nameController.text.toString()))));
                           }).onError((error, stackTrace) {
                               //print(error.toString());
                             Utils(check: false).toastMessage(error.toString());

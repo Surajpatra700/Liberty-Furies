@@ -7,7 +7,8 @@ import 'package:liberty_furies/pages/framework.dart';
 import 'package:liberty_furies/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  final String name;
+  const LoginScreen({super.key, required this.name});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -19,6 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final auth = FirebaseAuth.instance;
   bool hide = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,7 +133,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   MaterialPageRoute(
                                       builder: (context) => FrameworkScreen()));
                             }).onError((error, stackTrace) {
-                              Utils(check: false).toastMessage(error.toString());
+                              Utils(check: false)
+                                  .toastMessage(error.toString());
                             });
                           }
                         },
@@ -153,28 +156,56 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
-          Positioned(
-              top: 120,
-              left: 30,
-              child: Column(
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  Text(
-                    "Welcome",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "Login access to your account",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w300),
-                  ),
-                ],
-              ))
+          // Positioned(
+          //     top: 120,
+          //     left: 0,
+          //     child: Column(
+          //       // ignore: prefer_const_literals_to_create_immutables
+          //       children: [
+          //         Text(
+          //           "Welcome ${widget.name}",
+          //           style: TextStyle(
+          //               color: Colors.white,
+          //               fontSize: 40,
+          //               fontWeight: FontWeight.bold),
+          //         ),
+          //         Padding(
+          //           padding: const EdgeInsets.only(left: 30.0),
+          //           child: Text(
+          //             "Login access to your account",
+          //             style: TextStyle(
+          //                 color: Colors.white,
+          //                 fontSize: 17,
+          //                 fontWeight: FontWeight.w300),
+          //           ),
+          //         ),
+          //       ],
+          //     )),
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 100.0,left: 30),
+                child: Text(
+                      "Welcome ${widget.name}",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold),
+                    ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(top: 4.0),
+                child: Text(
+                        "Login access to your account",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 17,
+                            fontWeight: FontWeight.w300),
+                      ),
+              ),
+            ],
+          )
         ],
       ),
     );

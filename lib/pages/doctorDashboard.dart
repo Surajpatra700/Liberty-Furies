@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 class DoctorDashboard extends StatelessWidget {
   List image =[
-    "assets/images/doctor1.jpg",
-    "assets/images/doctor2.jpg",
-    "assets/images/doctor3.jpg",
-    "assets/images/doctor4.jpg",
-    "assets/images/doctors.png",
+    "doctor1.jpg",
+    "doctor2.jpg",
+    "doctor3.jpg",
+    "doctor4.jpg",
+    "doctors.png",
   ];
   @override
   Widget build(BuildContext context) {
