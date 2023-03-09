@@ -6,7 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:liberty_furies/actions/Utils.dart';
-import 'package:liberty_furies/google%20maps/searchLocation.dart';
+import 'package:liberty_furies/google%20maps/voiceRecorder.dart';
+import 'package:share_plus/share_plus.dart';
 
 class GoogleMapScreen extends StatefulWidget {
   const GoogleMapScreen({super.key});
@@ -77,11 +78,18 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
         title: Text("Location"),
         centerTitle: true,
         actions: [
+          // IconButton(
+          //     onPressed: () async {
+          //       String url = "https://liberty.page.link/downloads";
+          //       await Share.share(url);
+          //     },
+          //     icon: Icon(Icons.share)),
+
           IconButton(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.mic),
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SearchLocation()));
+                  MaterialPageRoute(builder: (context) => VoiceRecorder()));
             },
           ),
           PopupMenuButton(
@@ -159,27 +167,27 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
           backgroundColor: Colors.deepPurple,
           onPressed: () {
             //_controller.
+            getUserCurrentLocation().then((value) async{
+              await Share.share("https://www.google.com/maps/search/?api=1&query=${value.latitude},${value.longitude}");
+            });
           },
-          child: Icon(Icons.center_focus_strong),
+          child: Icon(Icons.share),
         ),
       ),
-
-
       drawer: Drawer(
-        child: Column(
-        children: [
+        child: Column(children: [
           Container(
-              height: 210,
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Colors.black,
-                  Color.fromARGB(99, 4, 12, 239),
-                ],
-              )),
-              child: Center(
+            height: 210,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Colors.black,
+                Color.fromARGB(99, 4, 12, 239),
+              ],
+            )),
+            child: Center(
                 child: Text(
               "Liberty Furies",
               style: TextStyle(
@@ -188,9 +196,8 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
                   fontFamily: 'Lobster',
                   color: Colors.white),
             )),
-          ),   
-        ]
-      ),
+          ),
+        ]),
       ),
     );
   }

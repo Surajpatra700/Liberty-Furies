@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:liberty_furies/actions/splashActions.dart';
-import 'package:liberty_furies/google%20maps/searchLocation.dart';
+import 'package:liberty_furies/google%20maps/voiceRecorder.dart';
 import 'package:liberty_furies/pages/framework.dart';
 import 'package:liberty_furies/pages/googleMapScreen.dart';
 import 'package:liberty_furies/pages/loginPage.dart';

@@ -52,6 +52,13 @@ dependencies:
   http: ^0.13.5
   uuid: ^3.0.7
   geocoding: ^2.0.5
+  firebase_dynamic_links: ^5.0.16
+  share_plus: ^6.3.1
+  permission_handler: ^10.2.0
+  flutter_sound: ^9.2.13
+  path_provider: ^2.0.13
+  path: ^1.8.2
+
 
 dev_dependencies:
   flutter_test:
