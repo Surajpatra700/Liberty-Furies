@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:liberty_furies/actions/Utils.dart';
 import 'package:liberty_furies/pages/loginPage.dart';

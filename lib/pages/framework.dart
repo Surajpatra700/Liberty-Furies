@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import, prefer_const_literals_to_create_immutables
+
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:liberty_furies/pages/googleMapScreen.dart';
@@ -43,28 +45,28 @@ class _FrameworkScreenState extends State<FrameworkScreen> {
         height: 50,
         index: index,
         items: [
-          Icon(
+          const Icon(
             Icons.local_hospital,
             color: Colors.black,
           ),
-          Icon(
+          const Icon(
             Icons.phone,
             color: Colors.black,
           ),
-          Icon(
+          const Icon(
             Icons.home,
             color: Colors.black,
           ),
-          Icon(
+          const Icon(
             Icons.star_border_outlined,
             color: Colors.black,
           ),
-          Icon(
+          const Icon(
             Icons.person,
             color: Colors.black,
           ),
         ],
-        animationDuration: Duration(milliseconds: 400),
+        animationDuration: const Duration(milliseconds: 400),
       ),
     );
   }

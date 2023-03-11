@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:liberty_furies/domain%20pages/speechesPage.dart';
+import 'package:liberty_furies/pages/educationPage.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,18 +14,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<String> profileImage = [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhmytC7a0Fz5P0FQ0MEDpjA1XeP5LNComl2rXK3epyqZUIbwZ1KT2VbFpPP22AP0vBRsw&usqp=CAU"
-    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80",
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80",
     "https://ienglishstatus.com/wp-content/uploads/2022/03/Attitude-Profile-Whatsapp-DP-Boys.jpg",
     "https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?cs=srgb&dl=pexels-masha-raymers-2726111.jpg&fm=jpg",
     "https://cdn2.sharechat.com/BestPhotoProfile_255cf04_1602867049097_sc_cmprsd_40.jpg"
   ];
-  List<String> profileName = [
-    "INSIDER",
-    "MARSH",
-    "SPARK",
-    "RAMESH",
-    "AKASH"
-  ];
+  List<String> profileName = ["INSIDER", "MARSH", "SPARK", "RAMESH", "AKASH"];
   List<String> description = [
     "She is the first woman to win Miss World and Beauty with a Purpose together and the fourth Beauty with a Purpose winner from India at Miss World. she was crowned Miss World 2017 on November 18, 2017, in Sanya, China, by outgoing titleholder Miss World 2016, Stephanie Del Valle of Puerto Rico. She became the sixth Indian woman to be crowned Miss World, and the first since Priyanka Chopra in 2000.",
     "On September 25, 2018, Hima Das was conferred with the Arjuna Award by the President of India. The Arjuna Award is given to athletes who have made the country proud on the international stage, and is considered one of the nation's highest honours.",
@@ -114,11 +109,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: Container(
-                          height: 45,
-                          width: 100,
-                          child: Image.network(
-                              "https://cdn-icons-png.flaticon.com/512/201/201614.png"),
+                        child: InkWell(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> Education()));
+                          },
+                          child: Container(
+                            height: 45,
+                            width: 100,
+                            child: Image.network(
+                                "https://cdn-icons-png.flaticon.com/512/201/201614.png"),
+                          ),
                         ),
                       ),
                       Text("Edu & Training",
@@ -284,123 +284,125 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   children: [
                     Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 15.0),
-                          child: Align(
-                              alignment: Alignment.topLeft,
-                              child: Text(
-                                "Get Inspired",
-                                style: TextStyle(
-                                    fontSize: 23, fontWeight: FontWeight.bold),
-                              )),
-                        ),
-                    for(int i=0;i<(profileImage.length);i++)
-                    Column(  
-                      children: [
-                        //for(int i=0;i<profileImage.length;i++)
-                        Container(
-                          height: 60,
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 45,
-                                width: 45,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          profileImage[i]),
-                                      fit: BoxFit.cover),
-                                  borderRadius: BorderRadius.circular(45),
+                      padding: const EdgeInsets.symmetric(vertical: 15.0),
+                      child: Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            "Get Inspired",
+                            style: TextStyle(
+                                fontSize: 23, fontWeight: FontWeight.bold),
+                          )),
+                    ),
+                    for (int i = 0; i < (profileImage.length); i++)
+                      Column(
+                        children: [
+                          //for(int i=0;i<profileImage.length;i++)
+                          Container(
+                            height: 60,
+                            child: Row(
+                              children: [
+                                Container(
+                                  height: 45,
+                                  width: 45,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: NetworkImage(profileImage[i]),
+                                        fit: BoxFit.cover),
+                                    borderRadius: BorderRadius.circular(45),
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 8.0),
-                                      child: Row(
-                                        children: [
-                                          Text(
-                                            profileName[i],
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w800,
-                                                fontSize: 15),
-                                          ),
-                                          Icon(
-                                            Icons.post_add,
-                                            color: Colors.black54,
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsets.only(left: 8.0),
-                                            child: Text(
-                                              "posted a video",
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 20.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(top: 8.0),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              profileName[i],
                                               style: TextStyle(
-                                                  color: Colors.black87,
-                                                  fontSize: 14),
+                                                  fontWeight: FontWeight.w800,
+                                                  fontSize: 15),
                                             ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsets.only(left: 90.0),
-                                            child: Icon(
-                                              Icons.person_add,
+                                            Icon(
+                                              Icons.post_add,
                                               color: Colors.black54,
                                             ),
-                                          ),
-                                          Icon(
-                                            Icons.more_vert,
-                                            color: Colors.black54,
-                                          ),
-                                        ],
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 8.0),
+                                              child: Text(
+                                                "posted a video",
+                                                style: TextStyle(
+                                                    color: Colors.black87,
+                                                    fontSize: 14),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 90.0),
+                                              child: Icon(
+                                                Icons.person_add,
+                                                color: Colors.black54,
+                                              ),
+                                            ),
+                                            Icon(
+                                              Icons.more_vert,
+                                              color: Colors.black54,
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    Align(
-                                        alignment: Alignment.topLeft,
-                                        child: Text(
-                                          "Yesterday",
-                                          style: TextStyle(
-                                              color: Colors.black54, fontSize: 14),
-                                        )),
-                                  ],
-                                ),
-                              )
-                            ],
+                                      Align(
+                                          alignment: Alignment.topLeft,
+                                          child: Text(
+                                            "Yesterday",
+                                            style: TextStyle(
+                                                color: Colors.black54,
+                                                fontSize: 14),
+                                          )),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                    //for(int i=0;i<image.length;i++)
-                        Container(
-                          height: 180,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                    image[i]),
-                                fit: BoxFit.cover),
+                          //for(int i=0;i<image.length;i++)
+                          Container(
+                            height: 180,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: NetworkImage(image[i]),
+                                  fit: BoxFit.cover),
+                            ),
                           ),
-                        ),
-                    //for(int i=0;i<description.length;i++)
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0, vertical: 10),
-                          child: Text(
-                            description[i],
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.w400),
+                          //for(int i=0;i<description.length;i++)
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8.0, vertical: 10),
+                            child: Text(
+                              description[i],
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.w400),
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-          ],
-        ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                        ],
+                      ),
                   ],
                 ),
-      ),
+              ),
             ),
           ],
         ),
       ),
+      //drawer: Drawer(),
     );
   }
 }

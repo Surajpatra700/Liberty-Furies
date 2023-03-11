@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:liberty_furies/actions/Utils.dart';
 import 'package:liberty_furies/pages/framework.dart';
+// ignore: unused_import
 import 'package:liberty_furies/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -156,31 +157,6 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
-          // Positioned(
-          //     top: 120,
-          //     left: 0,
-          //     child: Column(
-          //       // ignore: prefer_const_literals_to_create_immutables
-          //       children: [
-          //         Text(
-          //           "Welcome ${widget.name}",
-          //           style: TextStyle(
-          //               color: Colors.white,
-          //               fontSize: 40,
-          //               fontWeight: FontWeight.bold),
-          //         ),
-          //         Padding(
-          //           padding: const EdgeInsets.only(left: 30.0),
-          //           child: Text(
-          //             "Login access to your account",
-          //             style: TextStyle(
-          //                 color: Colors.white,
-          //                 fontSize: 17,
-          //                 fontWeight: FontWeight.w300),
-          //           ),
-          //         ),
-          //       ],
-          //     )),
           Column(
             children: [
               Padding(
