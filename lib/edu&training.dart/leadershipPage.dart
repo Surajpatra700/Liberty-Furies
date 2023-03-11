@@ -383,6 +383,7 @@ class _LeadershipPageState extends State<LeadershipPage> {
                 ),
               ),
             ),
+            SizedBox(height: 30,),
           ],
         ),
       ),
