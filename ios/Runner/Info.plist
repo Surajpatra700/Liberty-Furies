@@ -28,6 +28,11 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>L5ApplicationQueriesScheme</key>
+        	<array>
+            		<string>tel</string>
+            		<string>whatsapp</string>
+            </array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

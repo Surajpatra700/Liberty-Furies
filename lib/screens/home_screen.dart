@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:liberty_furies/domain%20pages/speechesPage.dart';
 import 'package:liberty_furies/pages/educationPage.dart';
 
+import 'mentorHomePage.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -139,11 +141,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: Container(
-                          height: 45,
-                          width: 100,
-                          child: Image.network(
-                              "https://cdn-icons-png.flaticon.com/512/1376/1376523.png"),
+                        child: InkWell(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: ((context)=> MentorHomepage())));
+                          },
+                          child: Container(
+                            height: 45,
+                            width: 100,
+                            child: Image.network(
+                                "https://cdn-icons-png.flaticon.com/512/1376/1376523.png"),
+                          ),
                         ),
                       ),
                       Text("Mentorship",
