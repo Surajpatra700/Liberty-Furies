@@ -48,6 +48,7 @@ dependencies:
   fluttertoast: ^8.2.1
   google_fonts: ^4.0.3
   url_launcher: ^6.1.10
+  font_awesome_flutter: '>= 4.7.0'
   geolocator: ^9.0.2
   http: ^0.13.5
   uuid: ^3.0.7
