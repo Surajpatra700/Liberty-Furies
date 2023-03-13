@@ -2,13 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:liberty_furies/actions/splashActions.dart';
+import 'package:liberty_furies/auth/verifyCode.dart';
+import 'package:liberty_furies/auth/verifyPhoneNo.dart';
 import 'package:liberty_furies/edu&training.dart/selfDefence.dart';
 import 'package:liberty_furies/google%20maps/voiceRecorder.dart';
 import 'package:liberty_furies/pages/educationPage.dart';
 import 'package:liberty_furies/pages/framework.dart';
 import 'package:liberty_furies/pages/googleMapScreen.dart';
-import 'package:liberty_furies/pages/loginPage.dart';
-import 'package:liberty_furies/pages/signup.dart';
+import 'package:liberty_furies/auth/loginPage.dart';
+import 'package:liberty_furies/auth/signup.dart';
 import 'package:liberty_furies/screens/home_screen.dart';
 import 'package:liberty_furies/screens/splashScreen.dart';
 import 'package:lottie/lottie.dart';

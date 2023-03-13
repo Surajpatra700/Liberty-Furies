@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:liberty_furies/actions/Utils.dart';
-import 'package:liberty_furies/pages/loginPage.dart';
+import 'package:liberty_furies/auth/verifyPhoneNo.dart';
+import 'package:liberty_furies/auth/loginPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class signUp extends StatefulWidget {
@@ -44,9 +45,9 @@ class _signUpState extends State<signUp> {
           SingleChildScrollView(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              margin: EdgeInsets.only(top: 180, left: 50, right: 50),
+              margin: EdgeInsets.only(top: 150, left: 50, right: 50),
               width: double.infinity,
-              height: 424,
+              height: 470,
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
@@ -183,6 +184,24 @@ class _signUpState extends State<signUp> {
                         Text("Already have an account?"),
                         TextButton(onPressed: () {}, child: Text("Sign in"))
                       ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0,left: 10,right: 10),
+                      child: InkWell(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> VerifyNumber()));
+                        },
+                        child: Container(
+                          height: 40,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 126, 72, 218),
+                            borderRadius: BorderRadius.circular(50),
+                            border: Border.all(color: Colors.black54),
+                          ),
+                          child: Center(child: Text("SignUp with Phone Number",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 14),)),
+                        ),
+                      ),
                     )
                   ],
                 ),
@@ -190,7 +209,7 @@ class _signUpState extends State<signUp> {
             ),
           ),
           Positioned(
-              top: 80,
+              top: 60,
               left: 30,
               right: 40,
               child: Column(

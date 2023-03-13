@@ -78,12 +78,6 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
         title: Text("Location"),
         centerTitle: true,
         actions: [
-          // IconButton(
-          //     onPressed: () async {
-          //       String url = "https://liberty.page.link/downloads";
-          //       await Share.share(url);
-          //     },
-          //     icon: Icon(Icons.share)),
 
           IconButton(
             icon: Icon(Icons.mic),

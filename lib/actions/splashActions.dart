@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:liberty_furies/pages/framework.dart';
-import 'package:liberty_furies/pages/loginPage.dart';
-import 'package:liberty_furies/pages/signup.dart';
+import 'package:liberty_furies/auth/loginPage.dart';
+import 'package:liberty_furies/auth/signup.dart';
 import 'package:liberty_furies/screens/home_screen.dart';
 
 class SplashActions {

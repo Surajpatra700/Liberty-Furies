@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:liberty_furies/pages/framework.dart';
 
