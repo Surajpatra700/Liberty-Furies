@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:liberty_furies/domain%20pages/speechesPage.dart';
 import 'package:liberty_furies/pages/educationPage.dart';
+import 'package:liberty_furies/screens/userdetail.dart';
 
 import 'mentorHomePage.dart';
 
@@ -222,54 +223,61 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                Container(
-                  height: 90,
-                  width: 130,
-                  //color: Colors.yellow,
-                  decoration: BoxDecoration(
-                    border: Border.all(width: 0.4, color: Colors.grey.shade400),
-                    color: Colors.white,
-                  ),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: Container(
-                          height: 45,
-                          width: 100,
-                          child: Image.network(
-                              "https://cdn-icons-png.flaticon.com/512/2541/2541988.png"),
+                InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> UserDetail()));
+                  },
+                  child: Container(
+                    height: 90,
+                    width: 130,
+                    //color: Colors.yellow,
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 0.4, color: Colors.grey.shade400),
+                      color: Colors.white,
+                    ),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Container(
+                            height: 45,
+                            width: 100,
+                            child: Image.network(
+                                "https://cdn-icons-png.flaticon.com/512/2541/2541988.png"),
+                          ),
                         ),
-                      ),
-                      Text("User Records",
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w500)),
-                    ],
+                        Text("User Records",
+                            style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w500)),
+                      ],
+                    ),
                   ),
                 ),
-                Container(
-                  height: 90,
-                  width: 131,
-                  //color: Colors.yellow,
-                  decoration: BoxDecoration(
-                    border: Border.all(width: 0.4, color: Colors.grey.shade400),
-                    color: Colors.white,
-                  ),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: Container(
-                          height: 45,
-                          width: 100,
-                          child: Image.network(
-                              "https://cdn-icons-png.flaticon.com/512/6703/6703900.png"),
+                InkWell(
+                  child: Container(
+                    height: 90,
+                    width: 131,
+                    //color: Colors.yellow,
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 0.4, color: Colors.grey.shade400),
+                      color: Colors.white,
+                    ),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Container(
+                            height: 45,
+                            width: 100,
+                            child: Image.network(
+                                "https://cdn-icons-png.flaticon.com/512/6703/6703900.png"),
+                          ),
                         ),
-                      ),
-                      Text("Certificate",
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w500)),
-                    ],
+                        Text("Certificate",
+                            style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w500)),
+                      ],
+                    ),
                   ),
                 ),
               ],
