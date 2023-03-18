@@ -114,7 +114,7 @@ class _EducationState extends State<Education> {
                           else if(name[i].toString() == "Self Defence"){
                             Navigator.push(context, MaterialPageRoute(builder: ((context)=> SelfDefencePage())));
                           }else{
-                            Navigator.push(context, MaterialPageRoute(builder: ((context)=> ImportancePage())));
+                            Navigator.push(context, MaterialPageRoute(builder: ((context)=> Importance())));
                           }
                         },
                         child: Container(
