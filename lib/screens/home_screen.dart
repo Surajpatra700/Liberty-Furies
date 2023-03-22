@@ -15,6 +15,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   List<String> profileImage = [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhmytC7a0Fz5P0FQ0MEDpjA1XeP5LNComl2rXK3epyqZUIbwZ1KT2VbFpPP22AP0vBRsw&usqp=CAU"
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80",
@@ -40,6 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: new Drawer(),
       backgroundColor: Colors.grey.shade300,
       body: SingleChildScrollView(
         child: Column(
@@ -95,6 +98,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Colors.white70,
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 12.0, top: 40),
+                  child: IconButton(
+                    onPressed: () {
+                      _scaffoldKey.currentState!.openDrawer();
+                    },
+                    icon: Icon(Icons.menu, size: 30, color: Colors.white),
+                  ),
+                ),
               ],
             ),
             //Image.network("https://connectuspray.s3.amazonaws.com/wlpr2/7.png",fit: BoxFit.cover,),
@@ -113,8 +125,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: InkWell(
-                          onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> Education()));
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Education()));
                           },
                           child: Container(
                             height: 45,
@@ -143,8 +158,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: InkWell(
-                          onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: ((context)=> MentorHomepage())));
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: ((context) => MentorHomePage())));
                           },
                           child: Container(
                             height: 45,
@@ -224,15 +242,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 InkWell(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> UserDetail()));
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => UserDetail()));
                   },
                   child: Container(
                     height: 90,
                     width: 130,
                     //color: Colors.yellow,
                     decoration: BoxDecoration(
-                      border: Border.all(width: 0.4, color: Colors.grey.shade400),
+                      border:
+                          Border.all(width: 0.4, color: Colors.grey.shade400),
                       color: Colors.white,
                     ),
                     child: Column(
@@ -259,7 +279,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: 131,
                     //color: Colors.yellow,
                     decoration: BoxDecoration(
-                      border: Border.all(width: 0.4, color: Colors.grey.shade400),
+                      border:
+                          Border.all(width: 0.4, color: Colors.grey.shade400),
                       color: Colors.white,
                     ),
                     child: Column(

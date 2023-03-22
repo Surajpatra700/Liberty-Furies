@@ -1,142 +1,398 @@
-// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:liberty_furies/actions/Utils.dart';
 import 'package:liberty_furies/pages/framework.dart';
+import 'package:path/path.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-import 'mentorDashboard.dart';
+class MentorHomePage extends StatefulWidget {
+  const MentorHomePage({super.key});
 
+  @override
+  State<MentorHomePage> createState() => _MentorHomePageState();
+}
 
-class MentorHomepage extends StatelessWidget {
-
-  List image = [
-    "mentor1.jpg",
-    "mentor2.jpg",
-    "mentor3.jpg",
-    "mentor4.jpg",
-    "mentor5.jpg",
-  ];
-
-
+class _MentorHomePageState extends State<MentorHomePage> {
+  final searchController = TextEditingController();
+  String search = "";
+  final databaseRef = FirebaseDatabase.instance.ref("mentors");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true,
-      //backgroundColor: Color(0xFF000080),
-      body: SingleChildScrollView(
-
+      backgroundColor: Colors.grey.shade300,
+      body: Center(
         child: Container(
-          //height: double.infinity,
-          //color: Colors.transparent,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-              Colors.lightBlue,
-              Colors.indigo.shade600,
-            ]),
-          ),
           child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 30,),
-                  child: IconButton(onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => FrameworkScreen()));
-                  }, icon: Icon(Icons.arrow_back_ios_new,weight:10,),color: Colors.white,),
-                ),
-                Padding(padding: EdgeInsets.only(left: 15,top: 50),
-                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Welcome", style: TextStyle(
-                          fontSize:32,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white60,
-                          fontStyle: FontStyle.italic,
-                        ),),
-                        /* CircleAvatar(
-            radius: 25,
-            backgroundImage: AssetImage("assets/images/doctor1.jpg"),
-          )*/
-                      ],
-                    )
-                ),
-                SizedBox(height: 15,),
-                Padding(padding: EdgeInsets.only(left: 16,bottom: 35),
-                  child: Text("Popular Mentors", style: TextStyle(fontSize: 23,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
+            children: [
+              Stack(
+                children: [
+                  Container(
+                    height: 270,
+                    decoration: BoxDecoration(
+                      // gradient: LinearGradient(colors: [
+                      //   Color.fromARGB(255, 52, 62, 119),
+                      //   Color.fromARGB(255, 10, 16, 45),
+                      // ]),
+                      image: DecorationImage(image: NetworkImage("https://img.freepik.com/premium-photo/shot-two-business-women-working-together-with-laptop-office_519356-228.jpg?w=2000"),fit: BoxFit.cover),
+                    ),
+                  ),
 
-                  )
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0,left: 12),
+                    child: IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> FrameworkScreen()));
+                    }, icon: Icon(Icons.arrow_back_ios,color: Colors.black,size: 25)),
+                  ),
+
+                  Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 12,right: 12,top: 240),
+                  child: TextFormField(
+                    controller: searchController,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      hintText: "Search for domain",
+                      suffixIcon: Icon(Icons.search),
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(35)),
+                    ),
+                    onChanged: (String? value) {
+                      print(value);
+                      setState(() {
+                        search = value.toString();
+                      });
+                    },
                   ),
                 ),
-                GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisExtent: 210.0,
-                  ),
-                  itemCount: 5,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(
-                            builder: (context) => MentorDashboard()));
-                      },
-                      child: Container(
-                        margin: EdgeInsets.all(10),
-                        padding: EdgeInsets.symmetric(vertical: 15),
+              ),
+                ],
+              ),
+              
+              SizedBox(height: 35),
+              Text(
+                "Mentors List",
+                style: TextStyle(
+                    color: Color.fromARGB(255, 8, 26, 40),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600),
+              ),
+              SizedBox(height: 25),
+              Expanded(
+                child: FirebaseAnimatedList(
+                  query: databaseRef,
+                  itemBuilder: ((context, snapshot, animation, index) {
+                    late String domain =
+                        snapshot.child("domain").value.toString();
+                    if (searchController.text.isEmpty) {
+                      return Container(
                         decoration: BoxDecoration(
-                            color: Colors.white30,
-                            borderRadius: BorderRadius.circular(30),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.white30,
-                                  blurRadius: 5,
-                                  spreadRadius: 5
-                              ),
-                            ]
+                          borderRadius:
+                              BorderRadius.vertical(top: Radius.circular(20)),
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            CircleAvatar(
-                              radius: 40,
-                              backgroundImage: AssetImage(
-                                  "assets/images/${image[index]}"),
-                            ),
-                            Text("Mr/Mrs Mentor Name",
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 3.0, horizontal: 8),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Card(
+                              elevation: 2.5,
+                              child: ListTile(
+                                onTap: () async{
+                                  final Uri url = Uri(
+                                    scheme: "tel",
+                                    path: snapshot.child("phone").value.toString(),
+                                  );
+                                    if(await canLaunchUrl(url)){
+                                      await launchUrl(url);
+                                    }else{
+                                      Utils(check: false).toastMessage("Sorry can't launch this url");
+                                    }
+                                },
+                                tileColor: Colors.white,
+                                leading: Container(
+                                  height: 60,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(60),
+                                    image: DecorationImage(
+                                        image: NetworkImage(snapshot
+                                            .child("url")
+                                            .value
+                                            .toString()),
+                                        fit: BoxFit.cover),
+                                  ),
+                                ),
+                                title: Center(
+                                    child: Column(
+                                  children: [
+                                    Text(
+                                      snapshot.child("name").value.toString(),
+                                      style: TextStyle(
+                                          color: Colors.deepPurple,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    Text(
+                                      snapshot
+                                          .child("proffesion")
+                                          .value
+                                          .toString(),
+                                      style: TextStyle(
+                                          color: Colors.black54,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "(${snapshot.child("year").value.toString()}+ yrs of experience)",
+                                          style: TextStyle(
+                                              color: Colors.black54,
+                                              fontSize: 13.5,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                        Icon(
+                                          Icons.star,
+                                          color: Colors.yellow,
+                                          size: 18,
+                                        ),
+                                        Icon(
+                                          Icons.star,
+                                          color: Colors.yellow,
+                                          size: 18,
+                                        ),
+                                      ],
+                                    ),
+                                    Text(
+                                      snapshot.child("domain").value.toString(),
+                                      style: TextStyle(
+                                          color: Colors.black54,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                  ],
+                                )),
+                                subtitle: Center(
+                                    child: Padding(
+                                  padding: const EdgeInsets.only(left: 65.0),
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.phone),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 10.0),
+                                        child: Text(
+                                          snapshot
+                                              .child("phone")
+                                              .value
+                                              .toString(),
+                                          style: TextStyle(
+                                              color: Colors.black54,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )),
+                                trailing: InkWell(
+                                  onTap: () async{
+                                    if(snapshot.child("linkedin").value.toString() == "no"){
+                                      Utils(check: false).toastMessage("Linked account not provided");
+                                    }else{
+                                      await launchUrl(Uri.parse(snapshot.child("linkedin").value.toString()));
+                                    }
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 15.0),
+                                    child: Container(
+                                      height: 30,
+                                      width: 30,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(25),
+                                        image: DecorationImage(
+                                            image: NetworkImage(
+                                                "https://cdn-icons-png.flaticon.com/512/4494/4494497.png"),
+                                            fit: BoxFit.cover),
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
-                            Text("Mentor",
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black87,
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(Icons.star, color: Colors.amber,),
-                                Text("4.9",
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                      color: Colors.black54,
-                                    )),
-                              ],
-
-                            ),
-                            SizedBox(height: 17),
-                          ],
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    } else if (domain
+                        .toLowerCase()
+                        .contains(searchController.text.toLowerCase())) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.vertical(top: Radius.circular(20)),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 3.0, horizontal: 8),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Card(
+                              elevation: 2.5,
+                              child: ListTile(
+                                onTap: () async{
+                                  final Uri url = Uri(
+                                    scheme: "tel",
+                                    path: snapshot.child("phone").value.toString(),
+                                  );
+                                    if(await canLaunchUrl(url)){
+                                      await launchUrl(url);
+                                    }else{
+                                      Utils(check: false).toastMessage("Sorry can't launch this url");
+                                    }
+                                },
+                                tileColor: Colors.white,
+                                leading: Container(
+                                  height: 60,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(60),
+                                    image: DecorationImage(
+                                        image: NetworkImage(snapshot
+                                            .child("url")
+                                            .value
+                                            .toString()),
+                                        fit: BoxFit.cover),
+                                  ),
+                                ),
+                                title: Center(
+                                    child: Column(
+                                  children: [
+                                    Text(
+                                      snapshot.child("name").value.toString(),
+                                      style: TextStyle(
+                                          color: Colors.deepPurple,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    Text(
+                                      snapshot
+                                          .child("proffesion")
+                                          .value
+                                          .toString(),
+                                      style: TextStyle(
+                                          color: Colors.black54,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "(${snapshot.child("year").value.toString()}+ yrs of experience)",
+                                          style: TextStyle(
+                                              color: Colors.black54,
+                                              fontSize: 13.5,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                        Icon(
+                                          Icons.star,
+                                          color: Colors.yellow,
+                                          size: 18,
+                                        ),
+                                        Icon(
+                                          Icons.star,
+                                          color: Colors.yellow,
+                                          size: 18,
+                                        ),
+                                      ],
+                                    ),
+                                    RichText(
+                                      text: TextSpan(
+                                        text: "",
+                                        children: <TextSpan>[
+                                          TextSpan(
+                                              text: domain,
+                                              style: TextStyle(
+                                                  color: Colors.red,
+                                                  fontWeight: FontWeight.w500)),
+                                        ],
+                                      ),
+                                    ),
+                                    // Text(
+                                    //   domain,
+                                    //   style: TextStyle(
+                                    //       color: Colors.black54,
+                                    //       fontSize: 14,
+                                    //       fontWeight: FontWeight.w400),
+                                    // ),
+                                  ],
+                                )),
+                                subtitle: Center(
+                                    child: Padding(
+                                  padding: const EdgeInsets.only(left: 65.0),
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.phone),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 10.0),
+                                        child: Text(
+                                          snapshot
+                                              .child("phone")
+                                              .value
+                                              .toString(),
+                                          style: TextStyle(
+                                              color: Colors.black54,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )),
+                                trailing: InkWell(
+                                  onTap: () async{
+                                    if(snapshot.child("linkedin").value.toString() == "no"){
+                                      Utils(check: false).toastMessage("Linked account not provided");
+                                    }else{
+                                      await launchUrl(Uri.parse(snapshot.child("linkedin").value.toString()));
+                                    }
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 15.0),
+                                    child: Container(
+                                      height: 30,
+                                      width: 30,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(25),
+                                        image: DecorationImage(
+                                            image: NetworkImage(
+                                                "https://cdn-icons-png.flaticon.com/512/4494/4494497.png"),
+                                            fit: BoxFit.cover),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    } else {
+                      return Container();
+                    }
+                  }),
                 ),
-              ]),
+              )
+            ],
+          ),
         ),
       ),
     );

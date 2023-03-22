@@ -35,6 +35,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
   }
 
   void loadData() {
+    final time = DateTime.now();
     getUserCurrentLocation().then((value) async {
       _marker.add(
         Marker(
@@ -42,7 +43,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
           position: LatLng(value.latitude, value.longitude),
           icon: BitmapDescriptor.defaultMarker,
           infoWindow: InfoWindow(
-            title: "My Current Location",
+            title: "Current Location at ${time.hour}: ${time.minute}",
           ),
         ),
       );
@@ -62,12 +63,23 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
     setState(() {});
   }
 
+  Future _disposeController() async {
+    final GoogleMapController controller = await _controller.future;
+  }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     loadData();
     setMapStyle();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _disposeController();
+    super.dispose();
   }
 
   @override
@@ -78,7 +90,6 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
         title: Text("Location"),
         centerTitle: true,
         actions: [
-
           IconButton(
             icon: Icon(Icons.mic),
             onPressed: () {
@@ -161,8 +172,9 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
           backgroundColor: Colors.deepPurple,
           onPressed: () {
             //_controller.
-            getUserCurrentLocation().then((value) async{
-              await Share.share("https://www.google.com/maps/search/?api=1&query=${value.latitude},${value.longitude}");
+            getUserCurrentLocation().then((value) async {
+              await Share.share(
+                  "https://www.google.com/maps/search/?api=1&query=${value.latitude},${value.longitude}");
             });
           },
           child: Icon(Icons.share),

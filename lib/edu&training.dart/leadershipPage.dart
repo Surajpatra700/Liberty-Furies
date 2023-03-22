@@ -82,6 +82,12 @@ class _LeadershipPageState extends State<LeadershipPage> {
                     ),
                   ),
                   Padding(
+                    padding: const EdgeInsets.only(left: 12.0,top: 20),
+                    child: IconButton(onPressed: (){
+                      Navigator.pop(context);
+                    }, icon: Icon(Icons.arrow_back_ios,size: 25,color: Colors.white,)),
+                  ),
+                  Padding(
                     padding: const EdgeInsets.only(top: 70.0, left: 200),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -198,16 +204,24 @@ class _LeadershipPageState extends State<LeadershipPage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Container(
-                                  height: 150,
-                                  child: ClipRRect(
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(15),
-                                          topRight: Radius.circular(15)),
-                                      child: Image.network(image[i],
-                                          fit: BoxFit.cover,
-                                          height: 50,
-                                          width: 270)),
+                                Stack(
+                                  children: [
+                                    Container(
+                                      height: 150,
+                                      child: ClipRRect(
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(15),
+                                              topRight: Radius.circular(15)),
+                                          child: Image.network(image[i],
+                                              fit: BoxFit.cover,
+                                              height: 50,
+                                              width: 270)),
+                                    ),
+                                    Center(child: Padding(
+                                      padding: const EdgeInsets.only(top: 45.0),
+                                      child: Icon(Icons.play_circle,color: Colors.white54,size: 60,),
+                                    )),
+                                  ],
                                 ),
                                 SizedBox(
                                   height: 25,

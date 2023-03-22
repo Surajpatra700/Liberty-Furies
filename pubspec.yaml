@@ -60,7 +60,10 @@ dependencies:
   path_provider: ^2.0.13
   path: ^1.8.2
   country_picker: ^2.0.20
-
+  location: ^4.4.0
+  get: ^4.6.5
+  firebase_storage: ^11.0.16
+  image_picker: ^0.8.7
 
 dev_dependencies:
   flutter_test:

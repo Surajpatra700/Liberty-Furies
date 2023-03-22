@@ -11,7 +11,12 @@ class _AchievementState extends State<Achievement> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Achievement"),),
+      
+      drawer: new Drawer(),
+      appBar: AppBar(
+        title: Text("Achievement"),
+        
+      ),
     );
   }
 }

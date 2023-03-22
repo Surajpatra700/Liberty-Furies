@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:liberty_furies/actions/Utils.dart';
+import 'package:liberty_furies/auth/gynecologistSignUp.dart';
+import 'package:liberty_furies/auth/mentorSignUp.dart';
 import 'package:liberty_furies/auth/verifyPhoneNo.dart';
 import 'package:liberty_furies/auth/loginPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -45,9 +47,9 @@ class _signUpState extends State<signUp> {
           SingleChildScrollView(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              margin: EdgeInsets.only(top: 150, left: 50, right: 50),
+              margin: EdgeInsets.only(top: 130, left: 50, right: 50),
               width: double.infinity,
-              height: 470,
+              height: 518,
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
@@ -202,6 +204,17 @@ class _signUpState extends State<signUp> {
                           child: Center(child: Text("SignUp with Phone Number",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 14),)),
                         ),
                       ),
+                    ),
+                    Row(
+                      children: [
+                        TextButton(onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> MentorSignUp()));
+                        }, child: Text("mentor?",style: TextStyle(color: Colors.blue,fontSize: 15),)),                      
+                        Spacer(),
+                        TextButton(onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> GynecologistSignUp()));  
+                        }, child: Text("Gynecologist?",style: TextStyle(color: Colors.blue,fontSize: 15),)),
+                      ],
                     )
                   ],
                 ),
@@ -209,7 +222,7 @@ class _signUpState extends State<signUp> {
             ),
           ),
           Positioned(
-              top: 60,
+              top: 45,
               left: 30,
               right: 40,
               child: Column(

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:liberty_furies/screens/mentorHomePage.dart';
 
 class CarrierCouncellingPage extends StatefulWidget {
   const CarrierCouncellingPage({super.key});
@@ -67,13 +68,21 @@ class _CarrierCouncellingPageState extends State<CarrierCouncellingPage> {
                     ),
                   ),
                   Padding(
+                    padding: const EdgeInsets.only(top: 20.0,left: 12),
+                    child: IconButton(onPressed: (){
+                      Navigator.pop(context);
+                    }, icon: Icon(Icons.arrow_back_ios,size: 25,color: Colors.black,)),
+                  ),
+                  Padding(
                     padding: const EdgeInsets.only(top: 30.0, left: 330),
                     child: PopupMenuButton(
-                      icon: Icon(Icons.menu, size: 30, color: Colors.black),
+                      icon: Icon(Icons.more_vert, size: 24, color: Colors.black),
                       itemBuilder: (context) => [
                         PopupMenuItem(
                             child: TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=> MentorHomePage()));
+                                },
                                 child: Text(
                                   "Mentors Info",
                                   style: TextStyle(color: Colors.black),

@@ -21,13 +21,22 @@ class _EducationState extends State<Education> {
     "https://todaysparent.mblycdn.com/tp/resized/2016/02/1600x900/8-ways-to-deal-with-your-high-needs-baby-2560x1920-e1492029772633.jpg"
   ];
   List<String> name = [
-    "Leadership","Carrier Councelling","Self Defence","Importance of Women"
+    "Leadership",
+    "Carrier Councelling",
+    "Self Defence",
+    "Importance of Women"
   ];
   List<String> text1 = [
-    "Leadership Skills","Carrier Councelling &","Self Defence","Importance of Women"
+    "Leadership Skills",
+    "Carrier Councelling &",
+    "Self Defence",
+    "Importance of Women"
   ];
   List<String> text2 = [
-    "& it's Importance","rise of new India","& protection","in Shaping the Society"
+    "& it's Importance",
+    "rise of new India",
+    "& protection",
+    "in Shaping the Society"
   ];
   @override
   Widget build(BuildContext context) {
@@ -70,11 +79,11 @@ class _EducationState extends State<Education> {
           Padding(
             padding: const EdgeInsets.only(top: 105.0, left: 20, right: 20),
             child: TextFormField(
+              
               style: TextStyle(color: Colors.black),
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
-                suffixIcon: IconButton(
-                    onPressed: () {}, icon: Icon(Icons.search_rounded)),
+                suffixIcon: Icon(Icons.search_rounded),
                 filled: true,
                 fillColor: Colors.white,
                 focusColor: Colors.white,
@@ -83,6 +92,7 @@ class _EducationState extends State<Education> {
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(45)),
               ),
+              
             ),
           ),
           Padding(
@@ -102,19 +112,34 @@ class _EducationState extends State<Education> {
               child: Row(
                 children: [
                   for (int i = 0; i < 4; i++)
+                    
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: InkWell(
-                        onTap: (){
-                          if(name[i].toString() == "Leadership"){
-                            Navigator.push(context, MaterialPageRoute(builder: ((context)=> LeadershipPage())));
-                          }else if(name[i].toString() == "Carrier Councelling"){
-                            Navigator.push(context, MaterialPageRoute(builder: ((context)=> CarrierCouncellingPage())));
-                          }
-                          else if(name[i].toString() == "Self Defence"){
-                            Navigator.push(context, MaterialPageRoute(builder: ((context)=> SelfDefencePage())));
-                          }else{
-                            Navigator.push(context, MaterialPageRoute(builder: ((context)=> Importance())));
+                      
+                        onTap: () {
+                          if (name[i].toString() == "Leadership") {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: ((context) => LeadershipPage())));
+                          } else if (name[i].toString() ==
+                              "Carrier Councelling") {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: ((context) =>
+                                        CarrierCouncellingPage())));
+                          } else if (name[i].toString() == "Self Defence") {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: ((context) => SelfDefencePage())));
+                          } else {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: ((context) => Importance())));
                           }
                         },
                         child: Container(
@@ -134,8 +159,7 @@ class _EducationState extends State<Education> {
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(15),
                                         topRight: Radius.circular(15)),
-                                    child: Image.network(
-                                        image[i],
+                                    child: Image.network(image[i],
                                         fit: BoxFit.cover,
                                         height: 50,
                                         width: 270)),
@@ -187,18 +211,20 @@ class _EducationState extends State<Education> {
                                           color: Colors.black54, fontSize: 15),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 50.0),
+                                      padding:
+                                          const EdgeInsets.only(left: 50.0),
                                       child: Container(
                                         height: 8,
                                         width: 80,
                                         //color: Colors.red,
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          borderRadius: BorderRadius.circular(13),
+                                          borderRadius:
+                                              BorderRadius.circular(13),
                                         ),
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 36.0),
+                                          padding: const EdgeInsets.only(
+                                              right: 36.0),
                                           child: Container(
                                             width: 45,
                                             //color: Colors.red,
