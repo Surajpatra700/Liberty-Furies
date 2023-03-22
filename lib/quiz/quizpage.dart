@@ -57,7 +57,8 @@ class _quizpageState extends State<quizpage> {
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 31,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),

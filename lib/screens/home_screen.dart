@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:liberty_furies/domain%20pages/speechesPage.dart';
 import 'package:liberty_furies/pages/educationPage.dart';
+import 'package:liberty_furies/quiz/quizhomeScreen.dart';
 import 'package:liberty_furies/screens/userdetail.dart';
 
 import 'mentorHomePage.dart';
@@ -178,29 +179,34 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-                Container(
-                  height: 90,
-                  width: 131,
-                  //color: Colors.yellow,
-                  decoration: BoxDecoration(
-                    border: Border.all(width: 0.4, color: Colors.grey.shade400),
-                    color: Colors.white,
-                  ),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: Container(
-                          height: 45,
-                          width: 100,
-                          child: Image.network(
-                              "https://as2.ftcdn.net/v2/jpg/01/38/26/53/1000_F_138265357_dvVPtWBz5VQXBC0j1a5acIxp488Z2XjW.jpg"),
+                InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> QuizHomeScreen()));
+                  },
+                  child: Container(
+                    height: 90,
+                    width: 131,
+                    //color: Colors.yellow,
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 0.4, color: Colors.grey.shade400),
+                      color: Colors.white,
+                    ),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Container(
+                            height: 45,
+                            width: 100,
+                            child: Image.network(
+                                "https://as2.ftcdn.net/v2/jpg/01/38/26/53/1000_F_138265357_dvVPtWBz5VQXBC0j1a5acIxp488Z2XjW.jpg"),
+                          ),
                         ),
-                      ),
-                      Text("Questioning",
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w500)),
-                    ],
+                        Text("Questioning",
+                            style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w500)),
+                      ],
+                    ),
                   ),
                 ),
               ],
