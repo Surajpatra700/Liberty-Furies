@@ -5,6 +5,7 @@ import 'package:liberty_furies/edu&training.dart/carrierCouncelling.dart';
 import 'package:liberty_furies/edu&training.dart/importance.dart';
 import 'package:liberty_furies/edu&training.dart/leadershipPage.dart';
 import 'package:liberty_furies/edu&training.dart/selfDefence.dart';
+import 'package:liberty_furies/quiz/quizhomeScreen.dart';
 
 class Education extends StatefulWidget {
   const Education({super.key});
@@ -264,7 +265,9 @@ class _EducationState extends State<Education> {
           Padding(
             padding: const EdgeInsets.only(top: 620.0),
             child: ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: ((context)=> QuizHomeScreen())));
+              },
               leading: Container(
                 height: 45,
                 width: 45,
@@ -295,7 +298,9 @@ class _EducationState extends State<Education> {
           Padding(
             padding: const EdgeInsets.only(top: 690.0),
             child: ListTile(
-              onTap: () {},
+              onTap: () {
+
+              },
               leading: Container(
                 height: 45,
                 width: 45,
