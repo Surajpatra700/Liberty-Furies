@@ -94,7 +94,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
             icon: Icon(Icons.mic),
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => VoiceRecorder()));
+                  MaterialPageRoute(builder: (context) => AudioRecorder()));
             },
           ),
           PopupMenuButton(

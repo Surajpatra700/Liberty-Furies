@@ -1,8 +1,12 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_null_comparison, unnecessary_new
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:liberty_furies/actions/Utils.dart';
+import 'package:liberty_furies/auth/signup.dart';
 import 'package:liberty_furies/domain%20pages/speechesPage.dart';
 import 'package:liberty_furies/pages/educationPage.dart';
+import 'package:liberty_furies/pages/googleMapScreen.dart';
 import 'package:liberty_furies/quiz/quizhomeScreen.dart';
 import 'package:liberty_furies/screens/userdetail.dart';
 
@@ -16,6 +20,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final auth = FirebaseAuth.instance;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   List<String> profileImage = [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhmytC7a0Fz5P0FQ0MEDpjA1XeP5LNComl2rXK3epyqZUIbwZ1KT2VbFpPP22AP0vBRsw&usqp=CAU"
@@ -43,7 +48,128 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: new Drawer(),
+      drawer: new Drawer(
+        backgroundColor: Colors.grey.shade200,
+        child: Column(
+          children: [
+            Container(
+              height: 200,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(colors: [
+                  Color.fromARGB(255, 32, 75, 110),
+                  Color.fromARGB(255, 5, 23, 37),
+                ]),
+              ),
+              child: Center(
+                  child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: Container(
+                      height: 75,
+                      width: 75,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(75),
+                        image: DecorationImage(
+                            image: NetworkImage("https://unsplash.it/90/90"),
+                            fit: BoxFit.contain),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Liberty Furies",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 28,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: "Lobster"),
+                        ),
+                        if (auth.currentUser!.email.toString() != null)
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: Text(
+                              auth.currentUser!.email.toString(),
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14.5,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                ],
+              )),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.dashboard,
+                color: Colors.black54,
+              ),
+              title: Text(
+                "Profile Dashboard",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.share,
+                color: Colors.black54,
+              ),
+              title: Text(
+                "Share",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+            ),
+            ListTile(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> GoogleMapScreen()));
+              },
+              leading: Icon(
+                Icons.health_and_safety,
+                color: Colors.black54,
+              ),
+              title: Text(
+                "Safety",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.info_outline,
+                color: Colors.black54,
+              ),
+              title: Text(
+                "About",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+            ),
+            ListTile(
+              onTap: () async{
+                await auth.signOut().then((value) {
+                  Utils(check: true).toastMessage("signed out");
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> signUp()));
+                }).onError((error, stackTrace) {
+                  Utils(check: false).toastMessage(error.toString());
+                });
+              },
+              leading: Icon(
+                Icons.logout,
+                color: Colors.black54,
+              ),
+              title: Text(
+                "LogOut",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+            ),
+          ],
+        ),
+      ),
       backgroundColor: Colors.grey.shade300,
       body: SingleChildScrollView(
         child: Column(
@@ -136,7 +262,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             height: 45,
                             width: 100,
                             child: Image.network(
-                                "https://cdn-icons-png.flaticon.com/512/201/201614.png"),
+                                "https://cdn.vectorstock.com/i/preview-1x/18/61/education-icons-vector-131861.jpg"),
                           ),
                         ),
                       ),
@@ -169,7 +295,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             height: 45,
                             width: 100,
                             child: Image.network(
-                                "https://cdn-icons-png.flaticon.com/512/1376/1376523.png"),
+                                "https://t4.ftcdn.net/jpg/02/66/44/81/360_F_266448115_dbq4iTzjHruK9ocRoZU19yAIKN3oO9qs.jpg"),
                           ),
                         ),
                       ),
@@ -180,15 +306,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 InkWell(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> QuizHomeScreen()));
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => QuizHomeScreen()));
                   },
                   child: Container(
                     height: 90,
                     width: 131,
                     //color: Colors.yellow,
                     decoration: BoxDecoration(
-                      border: Border.all(width: 0.4, color: Colors.grey.shade400),
+                      border:
+                          Border.all(width: 0.4, color: Colors.grey.shade400),
                       color: Colors.white,
                     ),
                     child: Column(
@@ -269,7 +399,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             height: 45,
                             width: 100,
                             child: Image.network(
-                                "https://cdn-icons-png.flaticon.com/512/2541/2541988.png"),
+                                "https://cdn4.iconfinder.com/data/icons/big-data/512/user_cards-512.png"),
                           ),
                         ),
                         Text("User Records",

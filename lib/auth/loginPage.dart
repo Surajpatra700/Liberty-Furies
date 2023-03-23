@@ -9,7 +9,7 @@ import 'package:liberty_furies/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   final String name;
-  const LoginScreen({super.key, required this.name});
+  const LoginScreen({super.key,required this.name});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();

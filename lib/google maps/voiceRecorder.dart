@@ -1,99 +1,23 @@
-// import 'dart:async';
-// import 'dart:convert';
-
-// import 'package:flutter/material.dart';
-// import 'package:geocoding/geocoding.dart';
-// import 'package:google_maps_flutter/google_maps_flutter.dart';
-// import 'package:http/http.dart' as http;
-// import 'package:liberty_furies/actions/Utils.dart';
-// import 'package:liberty_furies/google%20maps/voiceRecorder2.dart';
-// import 'package:uuid/uuid.dart';
-
-// class SearchLocation extends StatefulWidget {
-//   const SearchLocation({super.key});
-
-//   @override
-//   State<SearchLocation> createState() => _SearchLocationState();
-// }
-
-// class _SearchLocationState extends State<SearchLocation> {
-//   final recorder = SoundRecorder();
-
-//   @override
-//   void initState() {
-//     // TODO: implement initState
-//     super.initState();
-//     recorder.init();
-//   }
-
-//   @override
-//   void dispose() {
-//     // TODO: implement dispose
-//     super.dispose();
-//     recorder.dispose();
-//   }
-
-//   Widget buildStart() {
-//     final isRecording = recorder.isRecording;
-//     final text = isRecording ? "STOP" : "START";
-//     final icon = isRecording ? Icons.stop : Icons.mic;
-//     final primary = isRecording ? Colors.red : Colors.white;
-//     final onPrimary = isRecording ? Colors.white : Colors.black;
-//     return ElevatedButton.icon(
-//       style: ElevatedButton.styleFrom(
-//         minimumSize: Size(175, 50),
-//         backgroundColor: primary,
-//         foregroundColor: onPrimary,
-//       ),
-//       onPressed: () async {
-//         final isRecording = await recorder.toggleRecording();
-//         setState(() {});
-//       },
-//       icon: Icon(Icons.mic),
-//       label: Text(
-//         text,
-//         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-//       ),
-//     );
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.black,
-//       appBar: AppBar(
-//         title: Text("Voice Recorder"),
-//         centerTitle: true,
-//         backgroundColor: Colors.indigo.shade400,
-//       ),
-//       body: Center(
-//         child: Center(
-//           child: buildStart(),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_sound/public/flutter_sound_recorder.dart';
+import 'package:flutter_sound/flutter_sound.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:path/path.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
-class VoiceRecorder extends StatefulWidget {
-  const VoiceRecorder({super.key});
+class AudioRecorder extends StatefulWidget {
+  const AudioRecorder({super.key});
 
   @override
-  State<VoiceRecorder> createState() => _VoiceRecorderState();
+  State<AudioRecorder> createState() => _AudioRecorderState();
 }
 
-class _VoiceRecorderState extends State<VoiceRecorder> {
+class _AudioRecorderState extends State<AudioRecorder> {
   final recorder = FlutterSoundRecorder();
-  Future<Directory> path = getTemporaryDirectory();
-  //final path = directoryPath.path;
+  bool isRecorderReady = false;
+  File? fileAudio;
+  final storage = firebase_storage.FirebaseStorage.instance;
 
   @override
   void initState() {
@@ -111,62 +35,100 @@ class _VoiceRecorderState extends State<VoiceRecorder> {
 
   Future initRecorder() async {
     final status = await Permission.microphone.request();
-
     if (status != PermissionStatus.granted) {
-      throw 'Microphone permission not granted';
+      throw "Microphone Permission not granted";
     }
-    await recorder.startRecorder();
-    // how often the progress is updated is checked using setSubscriptionDuration
-    recorder.setSubscriptionDuration(Duration(microseconds: 500));
+
+    await recorder.openRecorder();
+
+    isRecorderReady = true;
+    recorder.setSubscriptionDuration(Duration(milliseconds: 500));
   }
 
   Future record() async {
-    await recorder.startRecorder(toFile: "audio");
+    if (!isRecorderReady) return;
+    await recorder.startRecorder(toFile: 'audio');
   }
 
   Future stop() async {
-    await recorder.stopRecorder();
-    //final audioFile = File('${path.path}');
+    if (!isRecorderReady) return;
 
-    //print("Recorded audio: $audioFile");
+    final path = await recorder.stopRecorder();
+    final audioFile = File(path!);
+    fileAudio = audioFile;
+    // final url = Uri(
+    //   scheme:
+
+    // );
+    String id = DateTime.now().microsecondsSinceEpoch.toString();
+    firebase_storage.Reference ref = firebase_storage.FirebaseStorage.instance
+        .ref("/audio/" + "100");
+    firebase_storage.UploadTask uploadTask = ref.putFile(audioFile.absolute);
+
+    Future.value(uploadTask).then((value) async{
+      var newUrl = await ref.getDownloadURL();
+      await Share.share("$newUrl");
+    print("Recorder audio: $audioFile");
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          StreamBuilder<RecordingDisposition>(
-            stream: recorder.onProgress,
-            builder: (context, snapshot) {
-              final duration =
-                  snapshot.hasData ? snapshot.data!.duration : Duration.zero;
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            StreamBuilder<RecordingDisposition>(
+              stream: recorder.onProgress,
+              builder: (context, snapshot) {
+                final duration =
+                    snapshot.hasData ? snapshot.data!.duration : Duration.zero;
 
-              String twoDigits(int n) => n.toString().padLeft(2, '0');
-              final twoDigitMinutes =
-                  twoDigits(duration.inMinutes.remainder(60));
-              final twoDigitSeconds =
-                  twoDigits(duration.inSeconds.remainder(60));
+                String twoDigits(int n) => n.toString().padLeft(1);
+                final twoDigitMinutes =
+                    twoDigits(duration.inMinutes.remainder(60));
+                final twoDigitSeconds =
+                    twoDigits(duration.inSeconds.remainder(60));
 
-              return Text("${duration.inSeconds}",
-                  style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold));
-            },
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              if (recorder.isRecording) {
-                await stop();
-              } else {
-                await record();
-              }
-            },
-            child: Icon(
-              recorder.isRecording ? Icons.stop : Icons.mic,
-              size: 80,
+                return Text(
+                  "$twoDigitMinutes : $twoDigitSeconds",
+                  style: TextStyle(
+                      fontSize: 80,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                );
+              },
             ),
-          ),
-        ],
+            SizedBox(height: 32),
+
+            InkWell(
+              onTap: () async {
+                if (recorder.isRecording) {
+                  await stop();
+                } else {
+                  await record();
+                }
+                setState(() {});
+              },
+              child: Container(
+                height: 100,
+                width: 100,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  color: Color.fromARGB(255, 249, 21, 5),
+                ),
+                child: Icon(
+                  recorder.isRecording ? Icons.stop : Icons.mic,
+                  size: 80,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

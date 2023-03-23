@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, camel_case_types
 
 import 'package:flutter/material.dart';
 import 'package:liberty_furies/actions/Utils.dart';
@@ -16,6 +16,7 @@ class signUp extends StatefulWidget {
 }
 
 class _signUpState extends State<signUp> {
+  bool check = false;
   //bool check = false;
   bool hide = true;
   final _formKey = GlobalKey<FormState>();
@@ -73,10 +74,9 @@ class _signUpState extends State<signUp> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Please enter your name";
-                        }else{
+                        } else {
                           return null;
                         }
-                        
                       },
                     ),
                     SizedBox(
@@ -92,7 +92,7 @@ class _signUpState extends State<signUp> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Please enter your email";
-                        }else{
+                        } else {
                           return null;
                         }
                       },
@@ -117,7 +117,7 @@ class _signUpState extends State<signUp> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Please enter your password";
-                        }else{
+                        } else {
                           return null;
                         }
                       },
@@ -142,7 +142,7 @@ class _signUpState extends State<signUp> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "enter confirmation password";
-                        }else{
+                        } else {
                           return null;
                         }
                       },
@@ -155,65 +155,111 @@ class _signUpState extends State<signUp> {
                             backgroundColor: Colors.deepPurple,
                             padding: EdgeInsets.symmetric(horizontal: 55)),
                         onPressed: () {
-                          if(_formKey.currentState!.validate() && (passwordController.value.toString() == confirmController.value.toString())){
-                            setState(() {
-                                                      
-                            });
+                          if (_formKey.currentState!.validate() &&
+                              (passwordController.value.toString() ==
+                                  confirmController.value.toString())) {
+                            setState(() {});
                             auth
-                              .createUserWithEmailAndPassword(
-                            email: emailController.text.toString(),
-                            password: passwordController.text.toString(),
-                          )
-                              .then((value) {
-                            Utils(
-                              check: true)
-                                .toastMessage("Succesfully SignedUp");
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: ((context) => LoginScreen(name: nameController.text.toString()))));
-                          }).onError((error, stackTrace) {
+                                .createUserWithEmailAndPassword(
+                              email: emailController.text.toString(),
+                              password: passwordController.text.toString(),
+                            )
+                                .then((value) {
+                              Utils(check: true)
+                                  .toastMessage("Succesfully SignedUp");
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: ((context) => LoginScreen(
+                                          name: nameController.text
+                                              .toString()))));
+                            }).onError((error, stackTrace) {
                               //print(error.toString());
-                            Utils(check: false).toastMessage(error.toString());
-                          });
-                          }                         
+                              Utils(check: false)
+                                  .toastMessage(error.toString());
+                            });
+                          }
                         },
                         child: Text("Create account")),
-
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text("Already have an account?"),
-                        TextButton(onPressed: () {}, child: Text("Sign in"))
+                        TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginScreen(
+                                          name:
+                                              nameController.text.toString())));
+                            },
+                            child: Text("Sign in"))
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 8.0,left: 10,right: 10),
+                      padding:
+                          const EdgeInsets.only(top: 8.0, left: 10, right: 10),
                       child: InkWell(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> VerifyNumber()));
+                        onTap: () {
+                          setState(() {
+                            check = true;
+                          });
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => VerifyNumber()));
                         },
                         child: Container(
                           height: 40,
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 126, 72, 218),
+                            color: check == true
+                                ? Colors.white60
+                                : Color.fromARGB(255, 126, 72, 218),
                             borderRadius: BorderRadius.circular(50),
                             border: Border.all(color: Colors.black54),
                           ),
-                          child: Center(child: Text("SignUp with Phone Number",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 14),)),
+                          child: Center(
+                              child: Text(
+                            "SignUp with Phone Number",
+                            style: TextStyle(
+                                color:
+                                    check == true ? Colors.black : Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 14),
+                          )),
                         ),
                       ),
                     ),
                     Row(
                       children: [
-                        TextButton(onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> MentorSignUp()));
-                        }, child: Text("mentor?",style: TextStyle(color: Colors.blue,fontSize: 15),)),                      
+                        TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MentorSignUp()));
+                            },
+                            child: Text(
+                              "mentor?",
+                              style:
+                                  TextStyle(color: Colors.blue, fontSize: 15),
+                            )),
                         Spacer(),
-                        TextButton(onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> GynecologistSignUp()));  
-                        }, child: Text("Gynecologist?",style: TextStyle(color: Colors.blue,fontSize: 15),)),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          GynecologistSignUp()));
+                            },
+                            child: Text(
+                              "Gynecologist?",
+                              style:
+                                  TextStyle(color: Colors.blue, fontSize: 15),
+                            )),
                       ],
                     )
                   ],
