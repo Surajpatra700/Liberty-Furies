@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80",
     "https://ienglishstatus.com/wp-content/uploads/2022/03/Attitude-Profile-Whatsapp-DP-Boys.jpg",
     "https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?cs=srgb&dl=pexels-masha-raymers-2726111.jpg&fm=jpg",
-    "https://cdn2.sharechat.com/BestPhotoProfile_255cf04_1602867049097_sc_cmprsd_40.jpg"
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD7fKawqZzONLHjS5Nn2VV_YHQfU1L-MDHqhCt5UPXTw&usqp=CAU&ec=48665698"
   ];
   List<String> profileName = ["INSIDER", "MARSH", "SPARK", "RAMESH", "AKASH"];
   List<String> description = [
