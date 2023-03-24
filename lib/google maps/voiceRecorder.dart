@@ -56,13 +56,10 @@ class _AudioRecorderState extends State<AudioRecorder> {
     final path = await recorder.stopRecorder();
     final audioFile = File(path!);
     fileAudio = audioFile;
-    // final url = Uri(
-    //   scheme:
 
-    // );
     String id = DateTime.now().microsecondsSinceEpoch.toString();
     firebase_storage.Reference ref = firebase_storage.FirebaseStorage.instance
-        .ref("/audio/" + "100");
+        .ref("/audio/" + id);
     firebase_storage.UploadTask uploadTask = ref.putFile(audioFile.absolute);
 
     Future.value(uploadTask).then((value) async{

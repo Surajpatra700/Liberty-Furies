@@ -12,6 +12,7 @@ class UserDetail extends StatefulWidget {
 }
 
 class _UserDetailState extends State<UserDetail> {
+
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final phoneController = TextEditingController();
@@ -67,21 +68,33 @@ class _UserDetailState extends State<UserDetail> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 420.0,left: 20),
-                  child: Text("Let's Shine",style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold,color: Colors.deepPurple),),
+                  padding: const EdgeInsets.only(top: 420.0, left: 20),
+                  child: Text(
+                    "Let's Shine",
+                    style: TextStyle(
+                        fontSize: 23,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.deepPurple),
+                  ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 453.0,left: 20),
-                  child: Text("To be a shining star, to be an inspiration for\nthousands of female user, please fill up\nyour achievement form.",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w400,color: Colors.black54),),
+                  padding: const EdgeInsets.only(top: 453.0, left: 20),
+                  child: Text(
+                    "To be a shining star, to be an inspiration for\nthousands of female user, please fill up\nyour achievement form.",
+                    style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black54),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 530, left: 20, right: 20),
                   child: TextFormField(
                     controller: nameController,
                     validator: (value) {
-                      if(value == null){
+                      if (value == null) {
                         print("Please enter the name");
-                      }else{
+                      } else {
                         return null;
                       }
                     },
@@ -105,9 +118,9 @@ class _UserDetailState extends State<UserDetail> {
                   child: TextFormField(
                     controller: emailController,
                     validator: (value) {
-                      if(value == null){
+                      if (value == null) {
                         print("Please enter the email");
-                      }else{
+                      } else {
                         return null;
                       }
                     },
@@ -131,9 +144,9 @@ class _UserDetailState extends State<UserDetail> {
                   child: TextFormField(
                     controller: phoneController,
                     validator: (value) {
-                      if(value == null){
+                      if (value == null) {
                         print("Please enter this section");
-                      }else{
+                      } else {
                         return null;
                       }
                     },
@@ -157,9 +170,9 @@ class _UserDetailState extends State<UserDetail> {
                   child: TextFormField(
                     controller: difficultyController,
                     validator: (value) {
-                      if(value == null){
+                      if (value == null) {
                         print("Please enter this section");
-                      }else{
+                      } else {
                         return null;
                       }
                     },
@@ -183,9 +196,9 @@ class _UserDetailState extends State<UserDetail> {
                   child: TextFormField(
                     controller: overcomeController,
                     validator: (value) {
-                      if(value == null){
+                      if (value == null) {
                         print("Please enter this section");
-                      }else{
+                      } else {
                         return null;
                       }
                     },
@@ -210,9 +223,9 @@ class _UserDetailState extends State<UserDetail> {
                   child: TextFormField(
                     controller: achievementController,
                     validator: (value) {
-                      if(value == null){
+                      if (value == null) {
                         print("Please mention your achievement section");
-                      }else{
+                      } else {
                         return null;
                       }
                     },
@@ -232,15 +245,37 @@ class _UserDetailState extends State<UserDetail> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 1160.0,left: 10,right: 10,bottom: 30),
+                  padding: const EdgeInsets.only(
+                      top: 1160.0, left: 10, right: 10, bottom: 30),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
                     child: Center(
                       child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurple,maximumSize: Size(280, 48)),
-                        onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> AchievementForm(name: nameController.text.toString(), email: emailController.text.toString(), domain: phoneController.text.toString(), difficulty: difficultyController.text.toString(), overcome: overcomeController.text.toString(), achievement: achievementController.text.toString())));
-                        }, child: Text("Submit",style: TextStyle(color: Colors.white,fontSize: 17,fontWeight: FontWeight.w700),)),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.deepPurple,
+                              maximumSize: Size(280, 48)),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AchievementForm(
+                                        name: nameController.text.toString(),
+                                        email: emailController.text.toString(),
+                                        domain: phoneController.text.toString(),
+                                        difficulty: difficultyController.text
+                                            .toString(),
+                                        overcome:
+                                            overcomeController.text.toString(),
+                                        achievement: achievementController.text
+                                            .toString())));
+                          },
+                          child: Text(
+                            "Submit",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 17,
+                                fontWeight: FontWeight.w700),
+                          )),
                     ),
                   ),
                 ),

@@ -50,7 +50,7 @@ class _FrameworkScreenState extends State<FrameworkScreen> {
             color: Colors.black,
           ),
           const Icon(
-            Icons.phone,
+            Icons.health_and_safety,
             color: Colors.black,
           ),
           const Icon(

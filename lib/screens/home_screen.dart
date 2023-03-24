@@ -332,7 +332,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 "https://as2.ftcdn.net/v2/jpg/01/38/26/53/1000_F_138265357_dvVPtWBz5VQXBC0j1a5acIxp488Z2XjW.jpg"),
                           ),
                         ),
-                        Text("Questioning",
+                        Text("Quiz",
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w500)),
                       ],
@@ -362,15 +362,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          padding: const EdgeInsets.symmetric(vertical: 6.0),
                           child: Container(
-                            height: 45,
+                            height: 40,
                             width: 100,
                             child: Image.network(
                                 "https://as1.ftcdn.net/v2/jpg/00/80/56/28/1000_F_80562883_PAJJNiVcccBaPnU1ee1vNredJ5mJkYyz.jpg"),
                           ),
                         ),
-                        Text("Speeches",
+                        Text("Inspiring\nSpeeches",
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w500)),
                       ],

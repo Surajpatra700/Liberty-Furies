@@ -410,81 +410,89 @@ class _SelfDefencePageState extends State<SelfDefencePage> {
                               launchUrl(Uri.parse("https://youtu.be/SfAoGd8R-CM"));
                             }
                           },
-                          child: Container(
-                            height: 300,
-                            width: 280,
-                            //color: Colors.white,
-                            decoration: BoxDecoration(
-                              //color: Colors.grey.shade300,
-                              gradient: LinearGradient(colors: [
-                                Color.fromARGB(255, 180, 189, 240),
-                                Color.fromARGB(255, 60, 33, 107),
-                              ]),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  height: 150,
-                                  child: ClipRRect(
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(15),
-                                          topRight: Radius.circular(15)),
-                                      child: Image.network(image[i],
-                                          fit: BoxFit.cover,
-                                          height: 50,
-                                          width: 280)),
+                          child: Stack(
+                            children: [
+                              Container(
+                                height: 300,
+                                width: 280,
+                                //color: Colors.white,
+                                decoration: BoxDecoration(
+                                  //color: Colors.grey.shade300,
+                                  gradient: LinearGradient(colors: [
+                                    Color.fromARGB(255, 180, 189, 240),
+                                    Color.fromARGB(255, 60, 33, 107),
+                                  ]),
+                                  borderRadius: BorderRadius.circular(15),
                                 ),
-                                SizedBox(
-                                  height: 25,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 20.0, left: 15),
-                                  child: Text(
-                                    text1[i],
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w800),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 15.0),
-                                  child: Text(
-                                    text2[i],
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w800),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 15.0, top: 10),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        "Self Defence Video",
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      height: 150,
+                                      child: ClipRRect(
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(15),
+                                              topRight: Radius.circular(15)),
+                                          child: Image.network(image[i],
+                                              fit: BoxFit.cover,
+                                              height: 50,
+                                              width: 280)),
+                                    ),
+                                    SizedBox(
+                                      height: 25,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 20.0, left: 15),
+                                      child: Text(
+                                        text1[i],
                                         style: TextStyle(
-                                            color: Colors.black54,
-                                            fontSize: 15),
+                                            color: Colors.black,
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.w800),
                                       ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 100.0),
-                                        child: Icon(
-                                          Icons.remove_red_eye,
-                                          color: Colors.red,
-                                        ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 15.0),
+                                      child: Text(
+                                        text2[i],
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.w800),
                                       ),
-                                      //Padding(padding: EdgeInsets.only(right: 10)),
-                                    ],
-                                  ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 15.0, top: 10),
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            "Self Defence Video",
+                                            style: TextStyle(
+                                                color: Colors.black54,
+                                                fontSize: 15),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(left: 100.0),
+                                            child: Icon(
+                                              Icons.remove_red_eye,
+                                              color: Colors.red,
+                                            ),
+                                          ),
+                                          //Padding(padding: EdgeInsets.only(right: 10)),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 105.0,vertical: 50),
+                                child: Icon(Icons.play_circle,color: Colors.white60,size: 60,),
+                              ),
+                            ],
                           ),
                         ),
                       ),
