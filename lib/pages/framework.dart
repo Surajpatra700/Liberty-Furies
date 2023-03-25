@@ -3,7 +3,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:liberty_furies/pages/googleMapScreen.dart';
-import 'package:liberty_furies/screens/achievement.dart';
+import 'package:liberty_furies/screens/about.dart';
 import 'package:liberty_furies/screens/callscreen.dart';
 import 'package:liberty_furies/screens/home_screen.dart';
 import 'package:liberty_furies/screens/hospital.dart';
@@ -23,8 +23,8 @@ class _FrameworkScreenState extends State<FrameworkScreen> {
     //CallScreen(),
     GoogleMapScreen(),
     HomeScreen(),
-    Achievement(),
     UserDetail(),
+    About(),
   ];
 
   @override
@@ -58,13 +58,14 @@ class _FrameworkScreenState extends State<FrameworkScreen> {
             color: Colors.black,
           ),
           const Icon(
-            Icons.star_border_outlined,
-            color: Colors.black,
-          ),
-          const Icon(
             Icons.person,
             color: Colors.black,
           ),
+          const Icon(
+            Icons.info_rounded,
+            color: Colors.black,
+          ),
+
         ],
         animationDuration: const Duration(milliseconds: 400),
       ),
