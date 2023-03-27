@@ -18,6 +18,7 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
       extendBody: true,
       body: Stack(
         children: [
+          
           Container(
             width: double.infinity,
             height: double.infinity,
@@ -32,6 +33,18 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Padding(
+            padding: const EdgeInsets.only(top: 0.0,left: 3),
+            child: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.arrow_back_ios,
+                  size: 24,
+                  color: Colors.white,
+                )),
+          ),
                 Spacer(flex: 2),
                 Text("Lets play quiz",
                     style: Theme.of(context).textTheme.headlineLarge?.copyWith(

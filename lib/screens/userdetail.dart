@@ -12,7 +12,6 @@ class UserDetail extends StatefulWidget {
 }
 
 class _UserDetailState extends State<UserDetail> {
-
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final phoneController = TextEditingController();
@@ -40,13 +39,29 @@ class _UserDetailState extends State<UserDetail> {
                   padding: const EdgeInsets.symmetric(vertical: 40),
                   // ignore: prefer_const_constructors
                   child: Center(
-                    child: Text(
-                      "User's achievement",
-                      // ignore: prefer_const_constructors
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 6, 5, 38),
-                          fontSize: 23,
-                          fontWeight: FontWeight.w700),
+                    child: Row(
+                      children: [
+                        IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: Icon(
+                              Icons.arrow_back_ios,
+                              color: Colors.black,
+                              size: 20,
+                            )),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 55.0),
+                          child: Text(
+                            "User's achievement",
+                            // ignore: prefer_const_constructors
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 6, 5, 38),
+                                fontSize: 23,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

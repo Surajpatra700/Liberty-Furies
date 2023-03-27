@@ -56,6 +56,12 @@ class _EducationState extends State<Education> {
           Row(
             children: [
               Padding(
+                padding: const EdgeInsets.only(top: 36),
+                child: IconButton(onPressed: (){
+                  Navigator.pop(context);
+                }, icon: Icon(Icons.arrow_back_ios,size: 25,color: Colors.white)),
+              ),
+              Padding(
                 padding: const EdgeInsets.only(top: 36.0, left: 20),
                 child: Text(
                   "Education",
@@ -66,7 +72,7 @@ class _EducationState extends State<Education> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 38.0, left: 140),
+                padding: const EdgeInsets.only(top: 38.0, left: 120),
                 child: IconButton(
                     onPressed: () {},
                     icon: Icon(
