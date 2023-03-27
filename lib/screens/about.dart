@@ -25,6 +25,7 @@ class _AboutState extends State<About> {
           )
       ),
     child: SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
       child: Container(
       margin: EdgeInsets.only(top: 100,left: 30,right: 30 ,bottom: 70),
       child: Row(
@@ -66,7 +67,7 @@ class _AboutState extends State<About> {
       child: Text(
         "Liberty Furies” is a new app developed for solving the problem of women. It can be used anywhere at any point of time. The app provides support for different safety services in one interface only. The app contains some features like location sharing and voice record and sharing features in which the location and voice record can be sent to guardian and nearby police station. This app ensures the safety of women. It helps to identify and call on resources to help the one out of dangerous situations. These reduce risk and bring assistance when user is in danger and provide facilities to send the location to the guardian and nearby police station. It contains mentorship and doctor page where user can connect with mentors and doctors if required. The app also contains an education and training page in which the user can be trained and educated to protect themselves.\n    The mission of this app is to create an application using newer and advanced technologies that ensures the safety of women protect them from being a victim of physical, emotional and sexual abuse.",
         style: TextStyle(
-            fontSize: 20,
+            fontSize: 19.5,
 
             color: Colors.white),
       ),
