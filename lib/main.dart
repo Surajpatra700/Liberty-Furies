@@ -17,6 +17,7 @@ import 'package:liberty_furies/auth/signup.dart';
 import 'package:liberty_furies/screens/achievement.dart';
 import 'package:liberty_furies/screens/achievementForm.dart';
 import 'package:liberty_furies/screens/home_screen.dart';
+import 'package:liberty_furies/screens/hospital.dart';
 import 'package:liberty_furies/screens/mentorHomePage.dart';
 import 'package:liberty_furies/screens/splashScreen.dart';
 import 'package:liberty_furies/screens/userdetail.dart';

@@ -67,7 +67,7 @@ class _GynecologistFormState extends State<GynecologistForm> {
                   width: 330,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    color: Colors.white,
+                    color: Colors.indigo.shade200,
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20.0),
@@ -330,7 +330,7 @@ class _GynecologistFormState extends State<GynecologistForm> {
                                             firebase_storage
                                                 .FirebaseStorage.instance
                                                 .ref(
-                                                    "/profile photo/" + "1001");
+                                                    "/profile photo/" + id);
                                         firebase_storage.UploadTask uploadTask =
                                             ref.putFile(_image!.absolute);
 
@@ -363,7 +363,7 @@ class _GynecologistFormState extends State<GynecologistForm> {
                                                   builder: ((context) =>
                                                       DoctorHomePage())));
                                           Utils(check: true).toastMessage(
-                                              "Succesfully submitted");
+                                              "Succesfully Registered");
                                         }).onError((error, stackTrace) {
                                           setState(() {
                                             loading = false;

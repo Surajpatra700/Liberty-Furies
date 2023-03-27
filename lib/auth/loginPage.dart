@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:liberty_furies/actions/Utils.dart';
+import 'package:liberty_furies/auth/forgetPassword.dart';
 import 'package:liberty_furies/pages/framework.dart';
 // ignore: unused_import
 import 'package:liberty_furies/screens/home_screen.dart';
@@ -107,7 +108,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> ForgetPassword()));
+                        },
                         child: Text(
                           "Forget Password?",
                           style: TextStyle(color: Colors.blue),
@@ -171,7 +174,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
 
               Padding(
-                padding: const EdgeInsets.only(top: 4.0),
+                padding: const EdgeInsets.only(top: 4.0,left: 30),
                 child: Text(
                         "Login access to your account",
                         style: TextStyle(

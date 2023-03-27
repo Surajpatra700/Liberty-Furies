@@ -338,7 +338,7 @@ class _MentorFormState extends State<MentorForm> {
                                       right: 20.0, top: 5),
                                   child: TextFormField(
                                     controller: linkedinController,
-                                    keyboardType: TextInputType.phone,
+                                    keyboardType: TextInputType.text,
                                     decoration: InputDecoration(
                                       border: OutlineInputBorder(),
                                       prefixIcon: Container(
@@ -376,7 +376,7 @@ class _MentorFormState extends State<MentorForm> {
                                             firebase_storage
                                                 .FirebaseStorage.instance
                                                 .ref(
-                                                    "/profile photo/" + "1000");
+                                                    "/profile photo/" + id);
                                         firebase_storage.UploadTask uploadTask =
                                             ref.putFile(_image!.absolute);
 
