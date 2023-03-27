@@ -14,7 +14,7 @@ import 'package:liberty_furies/pages/framework.dart';
 import 'package:liberty_furies/pages/googleMapScreen.dart';
 import 'package:liberty_furies/auth/loginPage.dart';
 import 'package:liberty_furies/auth/signup.dart';
-import 'package:liberty_furies/screens/achievement.dart';
+import 'package:liberty_furies/screens/about.dart';
 import 'package:liberty_furies/screens/achievementForm.dart';
 import 'package:liberty_furies/screens/home_screen.dart';
 import 'package:liberty_furies/screens/hospital.dart';

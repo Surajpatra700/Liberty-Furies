@@ -142,11 +142,15 @@ class _LoginScreenState extends State<LoginScreen> {
                             });
                           }
                         },
-                        child: Text("Login")),
+                        child: Text("Login",style: TextStyle(
+                          fontSize: 13.5
+                        ),)),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Doesn't have an account"),
+                        Text("Doesn't have an account?",style: TextStyle(
+                          fontSize: 10
+                        ),),
                         TextButton(
                             onPressed: () {},
                             child: Text(
