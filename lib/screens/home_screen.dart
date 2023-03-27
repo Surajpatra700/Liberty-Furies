@@ -8,6 +8,7 @@ import 'package:liberty_furies/domain%20pages/speechesPage.dart';
 import 'package:liberty_furies/pages/educationPage.dart';
 import 'package:liberty_furies/pages/googleMapScreen.dart';
 import 'package:liberty_furies/quiz/quizhomeScreen.dart';
+import 'package:liberty_furies/screens/about.dart';
 import 'package:liberty_furies/screens/userdetail.dart';
 
 import 'mentorHomePage.dart';
@@ -127,8 +128,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             ListTile(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> GoogleMapScreen()));
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => GoogleMapScreen()));
               },
               leading: Icon(
                 Icons.health_and_safety,
@@ -140,6 +142,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             ListTile(
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => About()));
+              },
               leading: Icon(
                 Icons.info_outline,
                 color: Colors.black54,
@@ -150,10 +156,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             ListTile(
-              onTap: () async{
+              onTap: () async {
                 await auth.signOut().then((value) {
-                  Utils(check: true).toastMessage("signed out");
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> signUp()));
+                  Utils(check: false).toastMessage("signed out");
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => signUp()));
                 }).onError((error, stackTrace) {
                   Utils(check: false).toastMessage(error.toString());
                 });

@@ -115,7 +115,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                     email: forgetPasswordController.text
                                         .toString())
                                 .then((value) {
-                              Utils()
+                              Utils(check: true)
                                   .toastMessage("Password send to your email");
                               setState(() {
                                 loading = false;
