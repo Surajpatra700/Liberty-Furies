@@ -35,7 +35,7 @@ A Flutter application that supports women safety, Gender Equality & women empowe
 
 ## :link: Link for Project:
 
-Download APK : <a href="/Desktop/Flutter Files/liberty_furies/build/app/outputs/flutter-apk" target="_blank">Click here</a>
+Download APK : [*Click here*](https://drive.google.com/file/d/16HN0g4TJ6I4nqzg3msvhJnXpqPt-gh-1/view?usp=drivesdk)
 
 ### :anchor: Features and Interface
 
