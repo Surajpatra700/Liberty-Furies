@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 import 'package:liberty_furies/edu&training.dart/carrierCouncelling.dart';
@@ -72,7 +72,7 @@ class _EducationState extends State<Education> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 38.0, left: 120),
+                padding: const EdgeInsets.only(top: 38.0, left: 105),
                 child: IconButton(
                     onPressed: () {},
                     icon: Icon(

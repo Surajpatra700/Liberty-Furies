@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, no_leading_underscores_for_local_identifiers, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:liberty_furies/screens/home_screen.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';

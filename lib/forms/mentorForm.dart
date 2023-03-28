@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, prefer_typing_uninitialized_variables, non_constant_identifier_names, unused_local_variable, body_might_complete_normally_nullable, prefer_interpolation_to_compose_strings, use_build_context_synchronously
 
 import 'dart:io';
 import 'package:firebase_database/firebase_database.dart';
@@ -37,7 +37,6 @@ class _MentorFormState extends State<MentorForm> {
       if (PickedFile != null) {
         _image = File(PickedFile.path);
       } else {
-        print("No Image Picked");
       }
     });
   }
@@ -138,7 +137,6 @@ class _MentorFormState extends State<MentorForm> {
                                     ),
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        print("Please enter your name");
                                       } else {
                                         return null;
                                       }
@@ -168,7 +166,6 @@ class _MentorFormState extends State<MentorForm> {
                                     ),
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        print("Please enter your proffesion");
                                       } else {
                                         return null;
                                       }
@@ -214,7 +211,6 @@ class _MentorFormState extends State<MentorForm> {
                                     ),
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        print("Please enter your domain");
                                       } else {
                                         return null;
                                       }
@@ -248,7 +244,6 @@ class _MentorFormState extends State<MentorForm> {
                                     ),
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        print("Please enter your number");
                                       } else {
                                         return null;
                                       }
@@ -282,7 +277,6 @@ class _MentorFormState extends State<MentorForm> {
                                     ),
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        print("Please enter a value");
                                       } else {
                                         return null;
                                       }
@@ -353,8 +347,6 @@ class _MentorFormState extends State<MentorForm> {
                                     ),
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        print(
-                                            "Please enter no if you don't have it");
                                       } else {
                                         return null;
                                       }

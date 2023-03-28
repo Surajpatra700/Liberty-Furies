@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, duplicate_ignore, body_might_complete_normally_nullable, avoid_print, unnecessary_import
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

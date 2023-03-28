@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_null_comparison, unnecessary_new
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_null_comparison, unnecessary_new, sized_box_for_whitespace
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -90,17 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontWeight: FontWeight.w600,
                               fontFamily: "Lobster"),
                         ),
-                        // if (auth.currentUser!.email.toString() != null)
-                        //   Padding(
-                        //     padding: const EdgeInsets.only(top: 8.0),
-                        //     child: Text(
-                        //       auth.currentUser!.email.toString(),
-                        //       style: TextStyle(
-                        //           color: Colors.white,
-                        //           fontSize: 14.5,
-                        //           fontWeight: FontWeight.w500),
-                        //     ),
-                        //   ),
+                        
                       ],
                     ),
                   ),

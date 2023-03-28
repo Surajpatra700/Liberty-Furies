@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, prefer_const_constructors, prefer_interpolation_to_compose_strings, unnecessary_string_interpolations, avoid_print
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -21,6 +23,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
 
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     super.initState();
     initRecorder();
@@ -28,6 +31,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
 
   @override
   void dispose() {
+    // ignore: todo
     // TODO: implement dispose
     recorder.closeRecorder();
     super.dispose();

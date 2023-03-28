@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 
 class About extends StatefulWidget {
@@ -16,7 +18,7 @@ class _AboutState extends State<About> {
       body: Stack(
         children: [
           Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
       gradient: LinearGradient(colors: [
         Colors.indigo,
         Color(0xff000080),
@@ -27,14 +29,14 @@ class _AboutState extends State<About> {
     child: SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Container(
-      margin: EdgeInsets.only(top: 100,left: 30,right: 30 ,bottom: 70),
+      margin: const EdgeInsets.only(top: 100,left: 30,right: 30 ,bottom: 70),
       child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
       Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
         "About",
         style: TextStyle(
             fontSize: 50,
@@ -49,10 +51,10 @@ class _AboutState extends State<About> {
       ),
             ]),
       ),
-        SizedBox(height: 5,),
-        Container(
+        const SizedBox(height: 5,),
+        SizedBox(
           width: 320,
-          child: Text(
+          child: const Text(
             "Version:-1.0.0",
             style: TextStyle(
                 fontSize: 18,
@@ -61,10 +63,10 @@ class _AboutState extends State<About> {
           ),
         ),
       // AppText(text: "Mountain",size: 30,),
-      SizedBox(height: 45,),
-      Container(
+      const SizedBox(height: 45,),
+      SizedBox(
       width: 335,
-      child: Text(
+      child: const Text(
         "Liberty Furies” is a new app developed for solving the problem of women. It can be used anywhere at any point of time. The app provides support for different safety services in one interface only. The app contains some features like location sharing and voice record and sharing features in which the location and voice record can be sent to guardian and nearby police station. This app ensures the safety of women. It helps to identify and call on resources to help the one out of dangerous situations. These reduce risk and bring assistance when user is in danger and provide facilities to send the location to the guardian and nearby police station. It contains mentorship and doctor page where user can connect with mentors and doctors if required. The app also contains an education and training page in which the user can be trained and educated to protect themselves.\n    The mission of this app is to create an application using newer and advanced technologies that ensures the safety of women protect them from being a victim of physical, emotional and sexual abuse.",
         style: TextStyle(
             fontSize: 19.5,

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, use_build_context_synchronously
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, use_build_context_synchronously, prefer_typing_uninitialized_variables
 import 'dart:io';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +35,6 @@ class _GynecologistFormState extends State<GynecologistForm> {
       if (PickedFile != null) {
         _image = File(PickedFile.path);
       } else {
-        print("No Image Picked");
       }
     });
   }
@@ -127,7 +126,6 @@ class _GynecologistFormState extends State<GynecologistForm> {
                                     ),
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        print("Please enter your name");
                                       } else {
                                         return null;
                                       }
@@ -157,7 +155,6 @@ class _GynecologistFormState extends State<GynecologistForm> {
                                     ),
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        print("Please enter your work place");
                                       } else {
                                         return null;
                                       }
@@ -203,7 +200,6 @@ class _GynecologistFormState extends State<GynecologistForm> {
                                     ),
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        print("Please enter your proffesion");
                                       } else {
                                         return null;
                                       }
@@ -237,7 +233,6 @@ class _GynecologistFormState extends State<GynecologistForm> {
                                     ),
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        print("Please enter your number");
                                       } else {
                                         return null;
                                       }
@@ -271,7 +266,6 @@ class _GynecologistFormState extends State<GynecologistForm> {
                                     ),
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        print("Please enter a value");
                                       } else {
                                         return null;
                                       }

@@ -19,12 +19,12 @@ class FrameworkScreen extends StatefulWidget {
 class _FrameworkScreenState extends State<FrameworkScreen> {
   int index = 2;
   final screens = [
-    DoctorHomePage(),
+    const DoctorHomePage(),
     //CallScreen(),
-    GoogleMapScreen(),
-    HomeScreen(),
-    UserDetail(),
-    About(),
+    const GoogleMapScreen(),
+    const HomeScreen(),
+    const UserDetail(),
+    const About(),
   ];
 
   @override

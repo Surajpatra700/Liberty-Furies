@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_final_fields
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_final_fields, unused_local_variable
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -69,6 +69,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
 
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     super.initState();
     loadData();
@@ -77,6 +78,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
 
   @override
   void dispose() {
+    // ignore: todo
     // TODO: implement dispose
     _disposeController();
     super.dispose();

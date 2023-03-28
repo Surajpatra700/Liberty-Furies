@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names
+
 import 'dart:ui';
 class AppColors{
   static final Color textColor1=Color(0xFF989acd);

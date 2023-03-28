@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_interpolation_to_compose_strings, library_private_types_in_public_api, sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 import 'package:liberty_furies/edu&training.dart/applargrtext.dart';
 import 'package:liberty_furies/edu&training.dart/apptext.dart';

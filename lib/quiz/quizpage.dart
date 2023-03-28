@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, prefer_typing_uninitialized_variables, camel_case_types, unnecessary_new, prefer_const_constructors, avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:liberty_furies/quiz/result.dart';
 
@@ -21,6 +23,7 @@ class _quizpageState extends State<quizpage> {
   bool answered = false;
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     super.initState();
     _controller = PageController(initialPage: 0);
@@ -47,7 +50,7 @@ class _quizpageState extends State<quizpage> {
                     answered = false;
                   });
                 },
-                physics: new NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,

@@ -14,6 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   final splashActions = SplashActions();
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     super.initState();
     splashActions.action(context);
