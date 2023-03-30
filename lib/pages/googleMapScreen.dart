@@ -182,31 +182,31 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
           child: Icon(Icons.share),
         ),
       ),
-      drawer: Drawer(
-        child: Column(children: [
-          Container(
-            height: 210,
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.black,
-                Color.fromARGB(99, 4, 12, 239),
-              ],
-            )),
-            child: Center(
-                child: Text(
-              "Liberty Furies",
-              style: TextStyle(
-                  fontSize: 39,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'Lobster',
-                  color: Colors.white),
-            )),
-          ),
-        ]),
-      ),
+      // drawer: Drawer(
+      //   child: Column(children: [
+      //     Container(
+      //       height: 210,
+      //       decoration: BoxDecoration(
+      //           gradient: LinearGradient(
+      //         begin: Alignment.topCenter,
+      //         end: Alignment.bottomCenter,
+      //         colors: [
+      //           Colors.black,
+      //           Color.fromARGB(99, 4, 12, 239),
+      //         ],
+      //       )),
+      //       child: Center(
+      //           child: Text(
+      //         "Liberty Furies",
+      //         style: TextStyle(
+      //             fontSize: 39,
+      //             fontWeight: FontWeight.w500,
+      //             fontFamily: 'Lobster',
+      //             color: Colors.white),
+      //       )),
+      //     ),
+      //   ]),
+      // ),
     );
   }
 }
